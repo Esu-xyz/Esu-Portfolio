@@ -192,83 +192,6 @@ function initProjectCardTilt() {
 }
 
 // ============================================
-// Cursor Follow Effect (subtle)
-// ============================================
-function initCursorEffect() {
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
-
-    const style = document.createElement('style');
-    style.textContent = `
-        .custom-cursor {
-            width: 10px;
-            height: 10px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.15s ease;
-            opacity: 0;
-            mix-blend-mode: difference;
-        }
-        
-        @media (hover: hover) and (pointer: fine) {
-            .custom-cursor.active {
-                opacity: 0.5;
-            }
-            
-            .custom-cursor.hover {
-                width: 40px;
-                height: 40px;
-                border-color: var(--secondary);
-            }
-        }
-    `;
-    document.head.appendChild(style);
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.classList.add('active');
-    });
-
-    // Smooth cursor follow
-    function animateCursor() {
-        const dx = mouseX - cursorX;
-        const dy = mouseY - cursorY;
-        
-        cursorX += dx * 0.15;
-        cursorY += dy * 0.15;
-        
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        
-        requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    // Hover effect on interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .project-card');
-    
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('hover');
-        });
-        
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover');
-        });
-    });
-}
-
-// ============================================
 // Page Load Animation
 // ============================================
 function initPageLoad() {
@@ -289,26 +212,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initPageLoad();
     initMagneticButtons();
     initProjectCardTilt();
-    
-    // Only init custom cursor on desktop
-    if (window.innerWidth > 768) {
-        initCursorEffect();
-    }
-});
-
-// ============================================
-// Resize Handler
-// ============================================
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        // Reinit on resize if needed
-        if (window.innerWidth > 768) {
-            const existingCursor = document.querySelector('.custom-cursor');
-            if (!existingCursor) {
-                initCursorEffect();
-            }
-        }
-    }, 250);
 });
