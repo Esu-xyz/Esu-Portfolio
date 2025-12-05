@@ -1,206 +1,171 @@
 // ============================================
-// Main JavaScript - Interactions & Animations
+// Main JavaScript - Animations & Interactions
 // ============================================
 
-// Smooth scroll function
-function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-    });
-}
-
-// ============================================
-// Initialize chromatic aberration text
-// ============================================
-function initChromaticText() {
-    const chromaticElements = document.querySelectorAll('.chromatic-text');
-    
-    chromaticElements.forEach(el => {
-        const text = el.textContent;
-        el.setAttribute('data-text', text);
-    });
-}
-
-// ============================================
-// Project Cards Animation on Scroll
-// ============================================
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe project cards
-    document.querySelectorAll('.project-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
-        observer.observe(card);
-    });
-
-    // Observe skill items
-    document.querySelectorAll('.skill-item').forEach((skill, index) => {
-        skill.style.opacity = '0';
-        skill.style.transform = 'translateX(-30px)';
-        skill.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
-        observer.observe(skill);
-    });
-}
-
-// ============================================
-// Skill bars animation
-// ============================================
-function animateSkillBars() {
-    const skillObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const fills = entry.target.querySelectorAll('.skill-fill');
-                fills.forEach((fill, index) => {
-                    setTimeout(() => {
-                        fill.style.width = fill.style.width;
-                    }, index * 100);
-                });
-                skillObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.skill-category').forEach(category => {
-        skillObserver.observe(category);
-    });
-}
-
-// ============================================
-// Parallax effect on scroll
-// ============================================
-function initParallax() {
-    let ticking = false;
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-                
-                // Parallax for hero content
-                const heroContent = document.querySelector('.hero-content');
-                if (heroContent) {
-                    heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-                    heroContent.style.opacity = Math.max(1 - scrolled / 600, 0);
-                }
-
-                ticking = false;
+// Smooth scroll with offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offsetTop = target.offsetTop - 100;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
             });
-            ticking = true;
         }
     });
-}
+});
 
 // ============================================
-// Cursor effect - Custom cursor trail
+// Scroll Animations - Fade In on Scroll
 // ============================================
-function initCustomCursor() {
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
+const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -100px 0px'
+};
 
-    const cursorStyle = document.createElement('style');
-    cursorStyle.textContent = `
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #28abff;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            mix-blend-mode: difference;
-            opacity: 0;
+const fadeInObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, index * 100);
         }
-        
-        .custom-cursor.active {
-            opacity: 1;
+    });
+}, observerOptions);
+
+// Observe all fade-in elements
+document.querySelectorAll('.fade-in').forEach(element => {
+    fadeInObserver.observe(element);
+});
+
+// ============================================
+// Project Cards Stagger Animation
+// ============================================
+const projectObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll('.project-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            projectObserver.unobserve(entry.target);
         }
-
-        .custom-cursor.clicked {
-            transform: scale(0.5);
-            border-color: #9d5cff;
-        }
-
-        a, button, .project-card {
-            cursor: none;
-        }
-    `;
-    document.head.appendChild(cursorStyle);
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.classList.add('active');
     });
+}, { threshold: 0.1 });
 
-    document.addEventListener('mouseleave', () => {
-        cursor.classList.remove('active');
+document.querySelectorAll('.projects-grid').forEach(grid => {
+    const cards = grid.querySelectorAll('.project-card');
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
     });
+    projectObserver.observe(grid);
+});
 
-    document.addEventListener('mousedown', () => {
-        cursor.classList.add('clicked');
-    });
+// ============================================
+// Parallax Effect on Hero
+// ============================================
+let lastScrollY = 0;
+let ticking = false;
 
-    document.addEventListener('mouseup', () => {
-        cursor.classList.remove('clicked');
-    });
-
-    // Smooth cursor follow
-    function updateCursor() {
-        const dx = mouseX - cursorX;
-        const dy = mouseY - cursorY;
-        
-        cursorX += dx * 0.15;
-        cursorY += dy * 0.15;
-        
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        
-        requestAnimationFrame(updateCursor);
-    }
-    updateCursor();
-
-    // Hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .project-card, .nav-link');
+function updateParallax() {
+    const scrollY = window.pageYOffset;
     
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.width = '40px';
-            cursor.style.height = '40px';
-            cursor.style.borderColor = '#9d5cff';
+    // Hero parallax
+    const hero = document.querySelector('.hero-content');
+    if (hero && scrollY < window.innerHeight) {
+        hero.style.transform = `translateY(${scrollY * 0.4}px)`;
+        hero.style.opacity = 1 - (scrollY / window.innerHeight) * 1.5;
+    }
+
+    // Gradient orbs parallax
+    const orb1 = document.querySelector('.orb-1');
+    const orb2 = document.querySelector('.orb-2');
+    if (orb1) orb1.style.transform = `translate(${scrollY * 0.1}px, ${scrollY * 0.15}px)`;
+    if (orb2) orb2.style.transform = `translate(${-scrollY * 0.1}px, ${-scrollY * 0.15}px)`;
+
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    lastScrollY = window.pageYOffset;
+    if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+    }
+});
+
+// ============================================
+// Navigation Active State
+// ============================================
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+function updateActiveNav() {
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.style.color = 'var(--text-gray)';
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.style.color = 'var(--text-white)';
+                }
+            });
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+
+// ============================================
+// Nav Background on Scroll
+// ============================================
+const nav = document.querySelector('.nav');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        nav.style.background = 'rgba(10, 10, 10, 0.95)';
+        nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+    } else {
+        nav.style.background = 'rgba(10, 10, 10, 0.8)';
+        nav.style.boxShadow = 'none';
+    }
+});
+
+// ============================================
+// Magnetic Effect on Buttons
+// ============================================
+function initMagneticButtons() {
+    const buttons = document.querySelectorAll('.btn-primary, .contact-link');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
         });
         
-        el.addEventListener('mouseleave', () => {
-            cursor.style.width = '20px';
-            cursor.style.height = '20px';
-            cursor.style.borderColor = '#28abff';
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translate(0, 0)';
         });
     });
 }
 
 // ============================================
-// Project card tilt effect
+// Project Card Tilt Effect
 // ============================================
 function initProjectCardTilt() {
     const cards = document.querySelectorAll('.project-card');
@@ -217,7 +182,7 @@ function initProjectCardTilt() {
             const rotateX = (y - centerY) / 20;
             const rotateY = (centerX - x) / 20;
             
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
         });
         
         card.addEventListener('mouseleave', () => {
@@ -227,85 +192,123 @@ function initProjectCardTilt() {
 }
 
 // ============================================
-// Navigation background on scroll
+// Cursor Follow Effect (subtle)
 // ============================================
-function initNavScroll() {
-    const nav = document.querySelector('.nav');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            nav.style.background = 'rgba(10, 10, 10, 0.95)';
-            nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
-        } else {
-            nav.style.background = 'rgba(10, 10, 10, 0.7)';
-            nav.style.boxShadow = 'none';
-        }
-    });
-}
+function initCursorEffect() {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
 
-// ============================================
-// Active section detection for navigation
-// ============================================
-function initActiveSection() {
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    const observerOptions = {
-        threshold: 0.3,
-        rootMargin: '-100px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.id;
-                
-                navLinks.forEach(link => {
-                    link.style.color = 'var(--text-white)';
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.style.color = 'var(--primary)';
-                    }
-                });
+    const style = document.createElement('style');
+    style.textContent = `
+        .custom-cursor {
+            width: 10px;
+            height: 10px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.15s ease;
+            opacity: 0;
+            mix-blend-mode: difference;
+        }
+        
+        @media (hover: hover) and (pointer: fine) {
+            .custom-cursor.active {
+                opacity: 0.5;
             }
-        });
-    }, observerOptions);
-    
-    sections.forEach(section => {
-        if (section.id) {
-            observer.observe(section);
+            
+            .custom-cursor.hover {
+                width: 40px;
+                height: 40px;
+                border-color: var(--secondary);
+            }
         }
+    `;
+    document.head.appendChild(style);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursor.classList.add('active');
+    });
+
+    // Smooth cursor follow
+    function animateCursor() {
+        const dx = mouseX - cursorX;
+        const dy = mouseY - cursorY;
+        
+        cursorX += dx * 0.15;
+        cursorY += dy * 0.15;
+        
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Hover effect on interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .project-card');
+    
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+        });
+        
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
     });
 }
 
 // ============================================
-// Initialize everything when DOM is ready
+// Page Load Animation
+// ============================================
+function initPageLoad() {
+    document.body.style.opacity = '0';
+    
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.body.style.transition = 'opacity 0.6s ease';
+            document.body.style.opacity = '1';
+        }, 100);
+    });
+}
+
+// ============================================
+// Initialize Everything
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    initChromaticText();
-    initScrollAnimations();
-    animateSkillBars();
-    initParallax();
-    initCustomCursor();
+    initPageLoad();
+    initMagneticButtons();
     initProjectCardTilt();
-    initNavScroll();
-    initActiveSection();
     
-    // Add loading animation
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.6s ease';
-        document.body.style.opacity = '1';
-    }, 100);
+    // Only init custom cursor on desktop
+    if (window.innerWidth > 768) {
+        initCursorEffect();
+    }
 });
 
 // ============================================
-// Optimize performance
+// Resize Handler
 // ============================================
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-        // Re-init animations on resize if needed
-        initScrollAnimations();
+        // Reinit on resize if needed
+        if (window.innerWidth > 768) {
+            const existingCursor = document.querySelector('.custom-cursor');
+            if (!existingCursor) {
+                initCursorEffect();
+            }
+        }
     }, 250);
 });

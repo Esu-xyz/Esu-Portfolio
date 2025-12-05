@@ -3,311 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - 3D Artist</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Esu - 3D Artist Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Canvas pour l'effet fluide -->
-    <canvas id="fluidCanvas"></canvas>
-    
     <!-- Navigation -->
     <nav class="nav">
-        <div class="nav-logo">
-            <span class="chromatic-text">PORTFOLIO</span>
-        </div>
+        <div class="nav-logo">Esu</div>
         <div class="nav-links">
-            <a href="#3d" class="nav-link">3D</a>
-            <a href="#animation" class="nav-link">Animation</a>
-            <a href="#drawing" class="nav-link">Drawing</a>
-            <a href="#contact" class="nav-link nav-link-cta">Contact</a>
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="grid-overlay"></div>
+        </div>
+        
         <div class="hero-content">
-            <h1 class="hero-title chromatic-text">
-                Creative<br>3D Artist
+            <div class="hero-label">3D Artist & Animator</div>
+            <h1 class="hero-title">
+                <span class="title-line">
+                    <span class="word">Crafting</span>
+                </span>
+                <span class="title-line">
+                    <span class="word">Stylized</span>
+                </span>
+                <span class="title-line">
+                    <span class="word gradient-text">Worlds</span>
+                </span>
             </h1>
-            <p class="hero-subtitle">
-                Crafting stylized worlds through 3D, animation & digital art
+            <p class="hero-description">
+                Specialized in stylized 3D art, character animation, and visual storytelling
             </p>
             <div class="hero-cta">
-                <button class="btn-primary" onclick="scrollToSection('3d')">
-                    View Work
-                </button>
-                <button class="btn-secondary" onclick="scrollToSection('contact')">
-                    Get in Touch
-                </button>
+                <a href="#work" class="btn-primary">
+                    <span>Explore Work</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </a>
             </div>
         </div>
+
         <div class="scroll-indicator">
+            <span>Scroll</span>
             <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- 3D Works Section -->
-    <section id="3d" class="section">
-        <div class="section-header">
-            <span class="section-number">01</span>
-            <h2 class="section-title">3D Stylized Works</h2>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card" data-index="1">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🎭</span>
+    <!-- Work Section -->
+    <section id="work" class="section section-work">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Featured Projects</div>
+                <h2 class="section-title">Selected Work</h2>
+            </div>
+
+            <!-- 3D Projects -->
+            <div class="work-category fade-in">
+                <h3 class="category-title">3D Stylized</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>01</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Character Design</h4>
+                            <p>Stylized 3D character modeling</p>
+                        </div>
                     </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Project Name</h3>
-                    <p class="project-desc">Character design & modeling</p>
-                    <div class="project-tags">
-                        <span class="tag">Blender</span>
-                        <span class="tag">Stylized</span>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>02</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Environment Art</h4>
+                            <p>Stylized environment design</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>03</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Props & Assets</h4>
+                            <p>Game-ready stylized props</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>04</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Scene Design</h4>
+                            <p>Complete stylized scene</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card" data-index="2">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🏰</span>
+            <!-- Animation Projects -->
+            <div class="work-category fade-in">
+                <h3 class="category-title">Animation</h3>
+                <div class="projects-grid projects-grid-small">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>05</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Character Animation</h4>
+                            <p>Walk cycles & expressions</p>
+                        </div>
                     </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Environment Art</h3>
-                    <p class="project-desc">Stylized environment design</p>
-                    <div class="project-tags">
-                        <span class="tag">3D</span>
-                        <span class="tag">Props</span>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>06</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Motion Design</h4>
+                            <p>Logo animations</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card" data-index="3">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🦊</span>
+            <!-- Drawing Projects -->
+            <div class="work-category fade-in">
+                <h3 class="category-title">Digital Art</h3>
+                <div class="projects-grid projects-grid-small">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>07</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Character Sketches</h4>
+                            <p>Concept exploration</p>
+                        </div>
                     </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Character Design</h3>
-                    <p class="project-desc">Cute character modeling</p>
-                    <div class="project-tags">
-                        <span class="tag">Character</span>
-                        <span class="tag">Rigging</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="project-card" data-index="4">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>⚔️</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Props & Assets</h3>
-                    <p class="project-desc">Game-ready assets</p>
-                    <div class="project-tags">
-                        <span class="tag">Props</span>
-                        <span class="tag">PBR</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-index="5">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🌸</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Scene Design</h3>
-                    <p class="project-desc">Complete stylized scene</p>
-                    <div class="project-tags">
-                        <span class="tag">Scene</span>
-                        <span class="tag">Lighting</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-index="6">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🎪</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Concept Art 3D</h3>
-                    <p class="project-desc">From concept to 3D</p>
-                    <div class="project-tags">
-                        <span class="tag">Concept</span>
-                        <span class="tag">3D</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Animation Section -->
-    <section id="animation" class="section">
-        <div class="section-header">
-            <span class="section-number">02</span>
-            <h2 class="section-title">Animation</h2>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card" data-index="7">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🎬</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Character Animation</h3>
-                    <p class="project-desc">Walk cycles & expressions</p>
-                    <div class="project-tags">
-                        <span class="tag">Animation</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-index="8">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🎞️</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Motion Design</h3>
-                    <p class="project-desc">Logo & transitions</p>
-                    <div class="project-tags">
-                        <span class="tag">Motion</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-index="9">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🎥</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Short Film</h3>
-                    <p class="project-desc">Animated short project</p>
-                    <div class="project-tags">
-                        <span class="tag">Film</span>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>08</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="view-project">View Project →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Illustrations</h4>
+                            <p>Digital paintings</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Drawing Section -->
-    <section id="drawing" class="section">
-        <div class="section-header">
-            <span class="section-number">03</span>
-            <h2 class="section-title">Digital Drawing</h2>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card" data-index="10">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🖌️</span>
+    <!-- About Section -->
+    <section id="about" class="section section-about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <div class="section-label">About Me</div>
+                    <h2 class="section-title">Esu</h2>
+                    <p>
+                        I'm a 3D artist specializing in stylized art, with a passion for creating 
+                        characters and environments that tell stories. My work focuses on bringing 
+                        personality and life to every project through thoughtful design and animation.
+                    </p>
+                    <div class="skills-list">
+                        <div class="skill-tag">Blender</div>
+                        <div class="skill-tag">Substance Painter</div>
+                        <div class="skill-tag">Character Design</div>
+                        <div class="skill-tag">Animation</div>
+                        <div class="skill-tag">Digital Painting</div>
                     </div>
                 </div>
-                <div class="project-info">
-                    <h3 class="project-title">Character Sketch</h3>
-                    <p class="project-desc">Character exploration</p>
-                    <div class="project-tags">
-                        <span class="tag">Sketch</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-index="11">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>🎨</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Concept Art</h3>
-                    <p class="project-desc">Initial designs</p>
-                    <div class="project-tags">
-                        <span class="tag">Concept</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-index="12">
-                <div class="project-image">
-                    <div class="project-placeholder">
-                        <span>✨</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Illustration</h3>
-                    <p class="project-desc">Digital painting</p>
-                    <div class="project-tags">
-                        <span class="tag">Illustration</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section section-dark">
-        <div class="section-header">
-            <span class="section-number">04</span>
-            <h2 class="section-title">Skills & Tools</h2>
-        </div>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3>3D & Modeling</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span>Blender</span>
-                        <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Substance Painter</span>
-                        <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span>ZBrush</span>
-                        <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Animation</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span>Character Animation</span>
-                        <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Rigging</span>
-                        <div class="skill-bar"><div class="skill-fill" style="width: 65%"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>2D Art</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span>Digital Painting</span>
-                        <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Concept Art</span>
-                        <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+                <div class="about-visual">
+                    <div class="visual-placeholder">
+                        <div class="visual-gradient"></div>
                     </div>
                 </div>
             </div>
@@ -316,39 +236,54 @@
 
     <!-- Contact Section -->
     <section id="contact" class="section section-contact">
-        <div class="contact-content">
-            <h2 class="contact-title chromatic-text">Let's Create Together</h2>
-            <p class="contact-subtitle">
-                Ready to bring your ideas to life?<br>
-                Let's discuss your next project.
-            </p>
-            <div class="contact-links">
-                <a href="mailto:your.email@example.com" class="contact-link">
-                    <span class="contact-icon">📧</span>
-                    <span>your.email@example.com</span>
-                </a>
-                <a href="#" class="contact-link">
-                    <span class="contact-icon">🎨</span>
-                    <span>ArtStation</span>
-                </a>
-                <a href="#" class="contact-link">
-                    <span class="contact-icon">💼</span>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="#" class="contact-link">
-                    <span class="contact-icon">🐦</span>
-                    <span>Twitter</span>
-                </a>
+        <div class="container">
+            <div class="contact-content fade-in">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Let's Work<br/>Together</h2>
+                <p class="contact-description">
+                    Available for freelance projects and collaborations
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">
+                        <span class="link-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span>Email</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span class="link-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span>ArtStation</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span class="link-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 - Made with ❤️ and lots of coffee</p>
+        <div class="container">
+            <p>© 2024 Esu. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="js/fluid.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
