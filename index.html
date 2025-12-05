@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - 3D Artist</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Canvas pour l'effet fluide -->
+    <canvas id="fluidCanvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <span class="chromatic-text">PORTFOLIO</span>
+        </div>
+        <div class="nav-links">
+            <a href="#3d" class="nav-link">3D</a>
+            <a href="#animation" class="nav-link">Animation</a>
+            <a href="#drawing" class="nav-link">Drawing</a>
+            <a href="#contact" class="nav-link nav-link-cta">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title chromatic-text">
+                Creative<br>3D Artist
+            </h1>
+            <p class="hero-subtitle">
+                Crafting stylized worlds through 3D, animation & digital art
+            </p>
+            <div class="hero-cta">
+                <button class="btn-primary" onclick="scrollToSection('3d')">
+                    View Work
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('contact')">
+                    Get in Touch
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- 3D Works Section -->
+    <section id="3d" class="section">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">3D Stylized Works</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card" data-index="1">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🎭</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Project Name</h3>
+                    <p class="project-desc">Character design & modeling</p>
+                    <div class="project-tags">
+                        <span class="tag">Blender</span>
+                        <span class="tag">Stylized</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="2">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🏰</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Environment Art</h3>
+                    <p class="project-desc">Stylized environment design</p>
+                    <div class="project-tags">
+                        <span class="tag">3D</span>
+                        <span class="tag">Props</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="3">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🦊</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Character Design</h3>
+                    <p class="project-desc">Cute character modeling</p>
+                    <div class="project-tags">
+                        <span class="tag">Character</span>
+                        <span class="tag">Rigging</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="4">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>⚔️</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Props & Assets</h3>
+                    <p class="project-desc">Game-ready assets</p>
+                    <div class="project-tags">
+                        <span class="tag">Props</span>
+                        <span class="tag">PBR</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="5">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🌸</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Scene Design</h3>
+                    <p class="project-desc">Complete stylized scene</p>
+                    <div class="project-tags">
+                        <span class="tag">Scene</span>
+                        <span class="tag">Lighting</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="6">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🎪</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Concept Art 3D</h3>
+                    <p class="project-desc">From concept to 3D</p>
+                    <div class="project-tags">
+                        <span class="tag">Concept</span>
+                        <span class="tag">3D</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animation Section -->
+    <section id="animation" class="section">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Animation</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card" data-index="7">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🎬</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Character Animation</h3>
+                    <p class="project-desc">Walk cycles & expressions</p>
+                    <div class="project-tags">
+                        <span class="tag">Animation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="8">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🎞️</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Motion Design</h3>
+                    <p class="project-desc">Logo & transitions</p>
+                    <div class="project-tags">
+                        <span class="tag">Motion</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="9">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🎥</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Short Film</h3>
+                    <p class="project-desc">Animated short project</p>
+                    <div class="project-tags">
+                        <span class="tag">Film</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drawing Section -->
+    <section id="drawing" class="section">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Digital Drawing</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card" data-index="10">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🖌️</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Character Sketch</h3>
+                    <p class="project-desc">Character exploration</p>
+                    <div class="project-tags">
+                        <span class="tag">Sketch</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="11">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>🎨</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Concept Art</h3>
+                    <p class="project-desc">Initial designs</p>
+                    <div class="project-tags">
+                        <span class="tag">Concept</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-index="12">
+                <div class="project-image">
+                    <div class="project-placeholder">
+                        <span>✨</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Illustration</h3>
+                    <p class="project-desc">Digital painting</p>
+                    <div class="project-tags">
+                        <span class="tag">Illustration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section section-dark">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Skills & Tools</h2>
+        </div>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>3D & Modeling</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span>Blender</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Substance Painter</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span>ZBrush</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Animation</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span>Character Animation</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Rigging</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 65%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>2D Art</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span>Digital Painting</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Concept Art</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-contact">
+        <div class="contact-content">
+            <h2 class="contact-title chromatic-text">Let's Create Together</h2>
+            <p class="contact-subtitle">
+                Ready to bring your ideas to life?<br>
+                Let's discuss your next project.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com" class="contact-link">
+                    <span class="contact-icon">📧</span>
+                    <span>your.email@example.com</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <span class="contact-icon">🎨</span>
+                    <span>ArtStation</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <span class="contact-icon">💼</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <span class="contact-icon">🐦</span>
+                    <span>Twitter</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 - Made with ❤️ and lots of coffee</p>
+    </footer>
+
+    <script src="js/fluid.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
